@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
+import { ScrollView, Text, Image, View, KeyboardAvoidingView } from 'react-native'
 import { Images } from '../Themes'
 import { Button, Icon, Input, ThemeProvider } from 'react-native-elements'
 
@@ -67,7 +67,7 @@ let LoginForm = (props) => {
           touched,
           handleSubmit,
         }) => (
-          <View style={{flex: .25, flexDirection: 'column', justifyContent: 'space-between'}}>
+          <KeyboardAvoidingView style={{flex: .30, flexDirection: 'column', justifyContent: 'space-between'}} behavior="padding" enabled>
             <ValidatedInput
               placeholder='Email'
               autoCapitalize={'none'}
@@ -98,7 +98,7 @@ let LoginForm = (props) => {
               onPress={handleSubmit}
               title={'Log In'}
             />
-          </View>
+          </KeyboardAvoidingView>
         )
       }
     </Formik>
@@ -122,7 +122,7 @@ export default class LaunchScreen extends Component {
       <ThemeProvider theme={theme}>
         <View style={styles.mainContainer}>
           <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
-          <View style={{flex: 1, justifyContent: 'center', padding: 10}}>
+          <View style={{flex: .85, justifyContent: 'center', padding: 10}}>
             <Text style={styles.sectionText}>
               {
                 this.state.authorized ? 'Authorized' : 'Non-Authorized'
