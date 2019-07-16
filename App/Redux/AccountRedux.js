@@ -16,6 +16,7 @@ export default Creators
 
 export const INITIAL_STATE = Immutable({
   account: null,
+  authenticated: false,
   fetching: null,
   payload: null,
   error: null
@@ -36,7 +37,7 @@ export const request = (state, { account }) =>
 // successful api lookup
 export const success = (state, action) => {
   const { payload } = action
-  return state.merge({ fetching: false, error: null, payload })
+  return state.merge({ authenticated: true, fetching: false, error: null, payload })
 }
 
 // Something went wrong somewhere.

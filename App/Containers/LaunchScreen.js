@@ -5,7 +5,7 @@ import { ScrollView, Text, Image, View, KeyboardAvoidingView } from 'react-nativ
 import { Images } from '../Themes'
 import { Button, Icon, Input, ThemeProvider } from 'react-native-elements'
 import { connect } from 'react-redux'
-
+import AccountActions from '../Redux/AccountRedux'
 
 import { Formik } from 'formik'
 // import { LoginSchema } from '../Services/Validators'
@@ -124,9 +124,9 @@ class LaunchScreen extends Component<Props, State> {
   constructor(props: Object) {
     super(props);
 
-    this.state = {
-      authorized: false
-    }
+    // this.state = {
+    //   authorized: false
+    // }
   }
 
   render () {
@@ -138,11 +138,11 @@ class LaunchScreen extends Component<Props, State> {
           <View style={{flex: .85, justifyContent: 'center', padding: 10}}>
             <Text style={styles.sectionText}>
               {
-                this.state.authorized ?  'Authorized' : 'Non-Authorized'
+                this.props.authenticated ?  'Authorized' : 'Non-Authorized'
               }
             </Text>
             {
-              this.state.authorized ?
+              this.props.authenticated ?
                 <Button
                   onPress={(values) => this.setState({authorized: false})}
                   title={'Log Out'}
@@ -150,7 +150,7 @@ class LaunchScreen extends Component<Props, State> {
                 :
                 <LoginForm
                   submit={
-                    (values) => this.setState({authorized: true})
+                    (values) => this.setState({authorized: true}, () => this.props.requestAccount())
                   }
                 />
             }
@@ -165,11 +165,14 @@ class LaunchScreen extends Component<Props, State> {
 
 const mapStateToProps = (state) => {
   return {
+    account: state.account,
+    authenticated: state.account.authenticated
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    requestAccount: () => dispatch(AccountActions.accountRequest())
   }
 }
 

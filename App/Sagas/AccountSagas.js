@@ -14,12 +14,15 @@ import { call, put } from 'redux-saga/effects'
 import AccountActions from '../Redux/AccountRedux'
 // import { AccountSelectors } from '../Redux/AccountRedux'
 
-export function * getAccount (api, action) {
+export function * getAccount(api, action) {
   const { data } = action
   // get current data from Store
   // const currentData = yield select(AccountSelectors.getData)
   // make the call to the api
-  const response = yield call(api.getaccount, data)
+  // debugger
+
+  const response = yield call(api.getAccount, data)
+  console.log(response)
 
   // success?
   if (response.ok) {
