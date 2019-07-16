@@ -21,10 +21,12 @@
     "lint": "standard --verbose | snazzy",
     "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
     "fixcode": "standard --fix",
-    "git-hook": "npm run lint -s && npm run test -s"
+    "git-hook": "npm run lint -s && npm run test -s",
+    "flow": "flow"
   },
   "dependencies": {
     "apisauce": "^1.0.2",
+    "flow-bin": "0.92.0",
     "format-json": "^1.0.3",
     "formik": "^1.5.8",
     "identity-obj-proxy": "^3.0.0",

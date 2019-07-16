@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View, KeyboardAvoidingView } from 'react-native'
 import { Images } from '../Themes'
@@ -105,10 +107,19 @@ let LoginForm = (props) => {
   )
 }
 
+type Props = {
+  className?: string,
+  disabled?: boolean
+};
 
-export default class LaunchScreen extends Component {
+type State = {
+  authorized: boolean
+}
 
-  constructor(props) {
+
+export default class LaunchScreen extends Component<Props, State> {
+
+  constructor(props: Object) {
     super(props);
 
     this.state = {
