@@ -12,6 +12,12 @@ export default {
       data: require('../Fixtures/rateLimit.json')
     }
   },
+  getAccount: () => {
+    return {
+      ok: true,
+      data: require('../Fixtures/account.json')
+    }
+  },
   getUser: (username) => {
     // This fixture only supports gantman or else returns skellock
     const gantmanData = require('../Fixtures/gantman.json')

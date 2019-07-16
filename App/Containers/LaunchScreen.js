@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import { ScrollView, Text, Image, View, KeyboardAvoidingView } from 'react-native'
 import { Images } from '../Themes'
 import { Button, Icon, Input, ThemeProvider } from 'react-native-elements'
+import { connect } from 'react-redux'
+
 
 import { Formik } from 'formik'
 // import { LoginSchema } from '../Services/Validators'
@@ -117,7 +119,7 @@ type State = {
 }
 
 
-export default class LaunchScreen extends Component<Props, State> {
+class LaunchScreen extends Component<Props, State> {
 
   constructor(props: Object) {
     super(props);
@@ -159,3 +161,16 @@ export default class LaunchScreen extends Component<Props, State> {
     )
   }
 }
+
+
+const mapStateToProps = (state) => {
+  return {
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen)
