@@ -136,14 +136,23 @@ export default class LaunchScreen extends Component<Props, State> {
           <View style={{flex: .85, justifyContent: 'center', padding: 10}}>
             <Text style={styles.sectionText}>
               {
-                this.state.authorized ? 'Authorized' : 'Non-Authorized'
+                this.state.authorized ?  'Authorized' : 'Non-Authorized'
               }
             </Text>
-            <LoginForm
-              submit={
-                (values) => this.setState({authorized: true})
-              }
-            />
+            {
+              this.state.authorized ?
+                <Button
+                  onPress={(values) => this.setState({authorized: false})}
+                  title={'Log Out'}
+                />
+                :
+                <LoginForm
+                  submit={
+                    (values) => this.setState({authorized: true})
+                  }
+                />
+            }
+
           </View>
         </View>
       </ThemeProvider>
